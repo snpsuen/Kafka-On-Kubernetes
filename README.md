@@ -17,7 +17,7 @@ We hope to provide a gold image for running Kafka on Kubernetes with least compl
 &nbsp;&nbsp; 2.1 &nbsp;&nbsp; kubectl apply -f kafka-deploy.yaml <br>
 &nbsp;&nbsp; 2.2 &nbsp;&nbsp; kubectl apply -f kafka-service.yaml <br>
 <p>
-3. Testing with an example topic, mytest <br>
+3. Test with an example topic <br>
 &nbsp;&nbsp; 3.1 &nbsp;&nbsp; kubectl run kafka-console --rm -i --tty --image confluentinc/cp-kafka -- bash <br>
 &nbsp;&nbsp; 3.2 &nbsp;&nbsp; [kafka-console] kafka-topics --create --bootstrap-server kafka01:9092 --replication-factor 1 --partitions 1 --topic mytest <br>
 &nbsp;&nbsp; 3.3 &nbsp;&nbsp; [kafka-console] kafka-console-producer --bootstrap-server kafka01:9092 --topic mytest <br>
