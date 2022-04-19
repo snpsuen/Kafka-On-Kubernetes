@@ -3,7 +3,7 @@ The repo contains the K8s manifest files required to set up a Kafka cluster in t
 * 2 x Zookeeper servers + 2 x Kafka brokers
 * Using the latest docker images, https://hub.docker.com/_/zookeepe and https://hub.docker.com/r/confluentinc/cp-kafka/
 
-We hope to provide a gold image for running Kafka on Kubernetes with least complexity or based on lowst common denominator.
+We hope to provide a gold image for running Kafka on Kubernetes with least complexity or based on lowest common denominator.
 <p>
 0. Prelim or prep work <br>
 &nbsp;&nbsp; 0.1 &nbsp;&nbsp; Set the ownership of /var/tmp/kafka01/data and /var/tmp/kafka02/data recursively to uid 1000, gid 1000 on the K8s nodes. <br>
