@@ -10,12 +10,12 @@ We hope to provide a gold image for running Kafka on Kubernetes with least compl
 &nbsp;&nbsp; 0.2 &nbsp;&nbsp; Install MetalLB, https://metallb.universe.tf/installation/
 <p>
 1. Deploy Zookeeper servers zookeep01 and zookeep02 on K8s <br>
-&nbsp;&nbsp; 1.1 &nbsp;&nbsp; kubernetes apply -f zookeeper-deploy.yaml <br>
-&nbsp;&nbsp; 1.2 &nbsp;&nbsp; kubernetes apply -f zookeeper-service.yaml <br>
+&nbsp;&nbsp; 1.1 &nbsp;&nbsp; kubectl apply -f zookeeper-deploy.yaml <br>
+&nbsp;&nbsp; 1.2 &nbsp;&nbsp; kubectl apply -f zookeeper-service.yaml <br>
 <p>
 2. Deploy Kafka brokers kafka01 and kafka02 on K8s <br>
-&nbsp;&nbsp; 2.1 &nbsp;&nbsp; kubernetes apply -f kafka-deploy.yaml <br>
-&nbsp;&nbsp; 2.2 &nbsp;&nbsp; kubernetes apply -f kafka-service.yaml <br>
+&nbsp;&nbsp; 2.1 &nbsp;&nbsp; kubectl apply -f kafka-deploy.yaml <br>
+&nbsp;&nbsp; 2.2 &nbsp;&nbsp; kubectl apply -f kafka-service.yaml <br>
 <p>
 3. Testing with an example topic, mytest <br>
 &nbsp;&nbsp; 3.1 &nbsp;&nbsp; kubectl run kafka-console --rm -i --tty --image confluentinc/cp-kafka -- bash <br>
