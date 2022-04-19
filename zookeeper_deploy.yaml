@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zookeep01-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zookeep01
+  template:
+    metadata:
+      labels:
+        app: zookeep01
+    spec:
+      containers:
+      - env:
+        - name: ZOOKEEPER_CLIENT_PORT
+          value: "2181"
+        - name: ZOOKEEPER_SERVER_ID
+          value: "1"
+        - name: ZOOKEEPER_SERVER
+          value: "server.1=zookeep01:2888:3888;2181 server.2=zookeep02:2888:3888;2181"
+        image: zookeeper
+        name: zookeep01
+        ports:
+        - containerPort: 2181
+        volumeMounts:
+        - mountPath: /var/lib/zookeeper/data
+          name: zookeeper-data
+        - mountPath: /var/lib/zookeeper/datalog
+          name: zookeeper-datalog
+      hostname: zookeep01
+      volumes:
+      - name: zookeeper-data
+        hostPath: 
+          path: /var/tmp/zookeep01/data
+          type: DirectoryOrCreate
+      - name: zookeeper-datalog
+        hostPath: 
+          path: /var/tmp/zookeep01/datalog
+          type: DirectoryOrCreate
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zookeep02-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zookeep02
+  template:
+    metadata:
+      labels:
+        app: zookeep02
+    spec:
+      containers:
+      - env:
+        - name: ZOOKEEPER_CLIENT_PORT
+          value: "2181"
+        - name: ZOOKEEPER_SERVER_ID
+          value: "2"
+        - name: ZOOKEEPER_SERVER
+          value: "server.1=zookeep01:2888:3888;2181 server.2=zookeep02:2888:3888;2181"
+        image: zookeeper
+        name: zookeep02
+        ports:
+        - containerPort: 2181
+        volumeMounts:
+        - mountPath: /var/lib/zookeeper/data
+          name: zookeeper-data
+        - mountPath: /var/lib/zookeeper/datalog
+          name: zookeeper-datalog
+      hostname: zookeep02
+      volumes:
+      - name: zookeeper-data
+        hostPath: 
+          path: /var/tmp/zookeep02/data
+          type: DirectoryOrCreate
+      - name: zookeeper-datalog
+        hostPath: 
+          path: /var/tmp/zookeep02/datalog
+          type: DirectoryOrCreate

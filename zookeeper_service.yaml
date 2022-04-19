@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: zookeep01
+  labels:
+    app: zookeep01
+spec:
+  selector:
+    app: zookeep01
+  ports:
+  - name: service
+    port: 2181
+    protocol: TCP
+    targetPort: 2181
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zookeep02
+  labels:
+    app: zookeep02
+spec:
+  selector:
+    app: zookeep02
+  ports:
+  - name: service
+    port: 2181
+    protocol: TCP
+    targetPort: 2181
+  type: LoadBalancer
